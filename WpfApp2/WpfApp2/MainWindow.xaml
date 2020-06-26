@@ -1,0 +1,73 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="广域网地质大数据发现引擎" Width="939" Height="667">
+    <Grid>
+
+        <Button Content="分词" HorizontalAlignment="Left" Height="22" Margin="320,21,0,0" VerticalAlignment="Top" Width="105" Click="bc1"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="210" Margin="24,355,0,0" VerticalAlignment="Top" Width="856" >           
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="名称" Width="150" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="URL" Width="300" DisplayMemberBinding="{Binding Path=Url}"/>
+                    <GridViewColumn Header="相关系数" Width="100" DisplayMemberBinding="{Binding Path=Cc}"/>
+                    <GridViewColumn Header="层级" Width="100" DisplayMemberBinding="{Binding Path=Cj}"/>
+                    <!--<GridViewColumn Header="简介" Width="250" DisplayMemberBinding="{Binding Vale3}"/>-->
+                    <GridViewColumn Header="数据类型" Width="100" DisplayMemberBinding="{Binding Path=Tt}"/>
+                    <GridViewColumn Header="爬取时间" Width="100" DisplayMemberBinding="{Binding Path=SearchTime}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Name="down" Content="下载" HorizontalAlignment="Left" Height="20" Margin="708,590,0,0" VerticalAlignment="Top" Width="53" Click="bc4"/>
+        <Button Content="地质序词表比对" HorizontalAlignment="Left" Height="22" Margin="462,21,0,0" VerticalAlignment="Top" Width="138" Click="bc2" />
+        <TextBox Name="box1" HorizontalAlignment="Left" Height="22" Margin="24,21,0,0" TextWrapping="Wrap" Text="沉积学数据库" VerticalAlignment="Top" Width="258"/>
+        <Label Content="输出条目个数：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,590,0,0"/>
+        <Label Content="第一级相关系数阈值：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="183,138,0,0"/>
+        <Label Content="0" Name="geshu" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="123,592,0,0" Width="60"/>
+        <TextBox Name="cengji" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="120" Margin="320,82,0,0"/>
+        <TextBox Name="yuzhi1" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="320,138,0,0" RenderTransformOrigin="0.417,3.462"/>
+        <Label Content="预设网页层级数：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="183,82,0,0" RenderTransformOrigin="1.044,-0.68" Width="113"/>
+        <ComboBox  Name="选择搜索api" FontFamily="FZLTZHUNHK" SelectedIndex="1" FontSize="18" Foreground="#FF545454" Padding="65,0,0,0" IsEditable="False"   Margin="645,21,33,581">         
+            <ComboBoxItem Content="谷   歌"  Padding="45,0,0,0" Margin="0,0,8,0"  />  
+        </ComboBox>
+        <ListBox  Name="listbox1" HorizontalAlignment="Left" Height="240" Margin="24,80,0,0" VerticalAlignment="Top" Width="118">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Name="stackPanel2" Orientation="Horizontal">
+                        <TextBlock  Text="{Binding Words,Mode=TwoWay}" Margin="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Label Content="分词队列" HorizontalAlignment="Left" Margin="24,48,0,0" VerticalAlignment="Top" Width="123"/>
+        <Button Content="初始化" HorizontalAlignment="Left" Margin="170,590,0,0" VerticalAlignment="Top" Width="80" Height="20" Click="bc3" />
+        <Button Content="第一层爬取" HorizontalAlignment="Left" Margin="300,590,0,0" VerticalAlignment="Top" Width="80" Height="20" Click="bc001" />
+        <Button Content="第二层爬取" HorizontalAlignment="Left" Margin="440,590,0,0" VerticalAlignment="Top" Width="80" Height="20" Click="bc002" />
+        <Button Content="第三层爬取" HorizontalAlignment="Left" Margin="570,590,0,0" VerticalAlignment="Top" Width="80" Height="20" Click="bc003" />
+        <Label Content="第二级相关系数阈值：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="183,197,0,0"/>
+        <TextBox x:Name="yuzhi2" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="120" Margin="320,197,0,0" RenderTransformOrigin="0.417,3.462"/>
+        <Label Content="第三级相关系数阈值：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="183,262,0,0"/>
+        <TextBox x:Name="yuzhi3" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="120" Margin="320,262,0,0" RenderTransformOrigin="0.417,3.462"/>
+        <Label Content="一级网址总数：" HorizontalAlignment="Left" Margin="477,134,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="576,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="num1" Text="{Binding Num1,Mode=TwoWay}" Width="74"/>
+        <Label Content="二级网址总数：" HorizontalAlignment="Left" Margin="477,200,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="576,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="num2" Width="74"/>
+        <Label Content="三级级网址总数：" HorizontalAlignment="Left" Margin="476,264,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="575,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="num3" Width="74"/>
+        <Label Content="链接数：" HorizontalAlignment="Left" Margin="691,137,0,0" VerticalAlignment="Top" Width="55"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="766,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="numTotal" Width="80" RenderTransformOrigin="0.214,0.565"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="766,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="numComplete" Width="80"/>
+        <Label Content="解析数：" HorizontalAlignment="Left" Margin="691,203,0,0" VerticalAlignment="Top"/>
+        <Label Content="运行状态：" HorizontalAlignment="Left" Margin="691,266,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="766,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="runStatus" Width="80"/>
+        <Button Content="刷新" HorizontalAlignment="Left" Margin="805,591,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+
+    </Grid>
+</Window>

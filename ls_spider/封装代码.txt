@@ -1,0 +1,1 @@
+PS F:\博二其他文件\DDE\baidu_google_search\0303_Google\ls_spider> pyinstaller.exe -F .\main0.py
